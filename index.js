@@ -19,27 +19,21 @@ class Field {
     stringField = stringField.join('\r\n')
     console.log(stringField)
   }
-  startGame(width, height){
+  startGame(){
+    this.print()
   }
-  static generateField(width, height){
+  static generateField(width, height, percent){
     const field = new Array(height).fill(0).map(arr => new Array(width))
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
-        widthArray.push(fieldCharacter);
+        let odds = Math.random();
+        field[i][j] = odds > percent ? fieldCharacter : hole;
       }
-      fieldArray.push(widthArray)
     }
-    console.log(fieldArray)
+    return field
   }
 }
 
 
-let myField = new Field (Field.generateField(10, 10))
-
-// [
-//   ['*', '░', '░', '░', '0', '░'],
-//   ['0', '░', '0', '░', '░', '0'],
-//   ['░', '0', '░', '░', '░', '^'],
-// ]
-
-// myField.print()
+let myField = new Field (Field.generateField(30, 10, 0.1))
+myField.startGame()
