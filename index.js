@@ -21,7 +21,60 @@ class Field {
     console.log(stringField)
   }
   startGame(){
-    this.print()
+    let playing = true;
+    while (playing === true) {
+      this.print()
+      this.moveCharacter()
+      if (!this.isInBounds()) {
+        console.log('This move is out of bounds!')
+        playing = false;
+        break;
+      } else if (this.isHole()) {
+        console.log('Uh oh! You fell into a hole.')
+        playing = false;
+        break;
+      } else if (this.isHat()) {
+        console.log('You found your hat!')
+        playing = false;
+        break;
+      } 
+      this.field[this.y][this.x] = pathCharacter;
+    }
+  }
+  moveCharacter() {
+    const answer = prompt('Which way?')
+    switch (answer) {
+      case 'd':
+        this.y += 1;
+        break;
+      case 'r':
+        this.x += 1;
+        break;
+      case 'l':
+        this.x -= 1;
+        break;
+      case 'u': 
+        this.y -= 1;
+        break;
+      default:
+        console.log('Enter U, D, L, or R')
+        this.moveCharacter();
+        break;
+    }
+  }
+  isInBounds(){
+    return (
+      this.x >= 0 &&
+      this.y >= 0 &&
+      this.x <= this.field[0].length &&
+      this.y <= this.field.length
+    )
+  }
+  isHole() {
+    return this.field[this.y][this.x] === hole;
+  }
+  isHat() {
+    return this.field[this.y][this.x] === hat;
   }
   static generateField(width, height, percent){
     const field = new Array(height).fill(0).map(arr => new Array(width))
