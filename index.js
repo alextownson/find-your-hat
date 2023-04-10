@@ -10,6 +10,7 @@ class Field {
     this.field = arr;
     this.x = 0;
     this.y = 0;
+    this.field[this.y][this.x] = pathCharacter;
   }
   print(){
     let stringField = []; 
@@ -30,6 +31,18 @@ class Field {
         field[i][j] = odds > percent ? fieldCharacter : hole;
       }
     }
+    const hatLocation = {
+      x: Math.floor(Math.random() * width),
+      y: Math.floor(Math.random() * height)
+    }
+
+    while (hatLocation.x === 0 && hatLocation.y === 0) {
+      hatLocation.x = Math.floor(Math.random() * width);
+      hatLocation.y = Math.floor(Math.random() * height);
+    }
+
+    field[hatLocation.y][hatLocation.x] = hat;
+
     return field
   }
 }
