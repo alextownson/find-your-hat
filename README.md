@@ -2,7 +2,7 @@
 
 ![Screenshot of find your hat game](./gameplay.png)
 
-Find Your Hat is an interactive terminal game. The objective is to move the character (star) across the field to find your hat (^) without falling into a hole (0) or going out of bounds. This game was made as a part of Codecademy's Front-End Engineer path. 
+Find Your Hat is an interactive terminal game. The objective is to move the character (star) across the field to find your hat (^) without falling into a hole (0) or going out of bounds. This game was made as a part of Codecademy's Front-End Engineer certificate course. 
 
 ## How To Play 
 
